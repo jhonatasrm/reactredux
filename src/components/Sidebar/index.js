@@ -1,14 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-
-function toggleInput(module, lesson) {
-  return {
-    type: 'TOGGLE_LESSON',
-    module,
-    lesson,
-  };
-}
+import * as LessonActions from '../../store/actions/lessons';
 
 const Sidebar = ({ modules, dispatch }) => {
   return (
@@ -21,7 +14,11 @@ const Sidebar = ({ modules, dispatch }) => {
             {module.lessons.map((lesson) => (
               <li key={lesson.id}>
                 {lesson.title}{' '}
-                <button onClick={() => dispatch(toggleInput(module, lesson))}>
+                <button
+                  onClick={() =>
+                    dispatch(LessonActions.toggleInput(module, lesson))
+                  }
+                >
                   Selecionar
                 </button>
               </li>
@@ -33,4 +30,6 @@ const Sidebar = ({ modules, dispatch }) => {
   );
 };
 
-export default connect((state) => ({ modules: state.modules }))(Sidebar);
+export default connect((state) => ({ modules: state.lessons.modules }))(
+  Sidebar
+);
