@@ -23,12 +23,11 @@ const INITIAL_STATE = {
 
 export default function lessons(state = INITIAL_STATE, action) {
   console.log(action);
-  if (action.type === 'TOGGLE_LESSON') {
-    return {
-      ...state,
-      activatedModule: action.module,
-      activatedLesson: action.lesson,
-    };
-  }
-  return state;
+  return action.type === 'TOGGLE_LESSON'
+    ? {
+        ...state,
+        activatedModule: action.module,
+        activatedLesson: action.lesson,
+      }
+    : state;
 }

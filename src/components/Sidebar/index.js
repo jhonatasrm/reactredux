@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
+
 import * as LessonActions from '../../store/actions/lessons';
 
 const Sidebar = ({ modules, dispatch }) => {
